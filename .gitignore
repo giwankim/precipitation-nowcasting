@@ -5,6 +5,7 @@
 *.json
 *.pth
 *.pt
+*.h5
 .vscode/
 
 # Byte-compiled / optimized / DLL files
