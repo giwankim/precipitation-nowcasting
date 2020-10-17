@@ -6,6 +6,8 @@
 *.pth
 *.pt
 *.h5
+*.ckpt
+lightning_logs/
 .vscode/
 
 # Byte-compiled / optimized / DLL files
