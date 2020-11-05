@@ -1,6 +1,16 @@
+import random
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle
+import torch
+
+
+def seed_everything(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 def visualize(x, y=None, test=False):
@@ -9,14 +19,14 @@ def visualize(x, y=None, test=False):
     if test:
         fig, axes = plt.subplots(1, 4, figsize=(10, 10))
         for i, ax in enumerate(axes):
-            img = x[:,:,i]
+            img = x[:, :, i]
             ax.imshow(img, cmap=cmap)
     else:
         fig, axes = plt.subplots(1, 5, figsize=(10, 10))
         for i, ax in enumerate(axes[:-1]):
-            img = x[:,:,i]
+            img = x[:, :, i]
             ax.imshow(img, cmap=cmap)
-        axes[-1].imshow(y[:,:,0], cmap=cmap)
+        axes[-1].imshow(y[:, :, 0], cmap=cmap)
     plt.show()
 
 
