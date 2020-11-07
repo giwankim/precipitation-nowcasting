@@ -33,6 +33,11 @@ def visualize(x, y=None, test=False):
 def radar2precipitation(radar):
     """Convert radar to precipitation."""
     dbz = ((radar - 0.5) / 255.0) * 70 - 10
+
+    # Numerically stable
+    dbz_max = np.max(dbz)
+    dbz -= dbz_max
     z = np.power(10.0, dbz / 10.0)
+    z *= np.power(10.0, dbz_max / 10.0)
     r = np.power(z / 200.0, 1.0 / 1.6)
     return r
